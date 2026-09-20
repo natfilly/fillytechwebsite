@@ -548,6 +548,9 @@
 
 <script>
   (function () {
+    function contactEmail() {
+      try { return atob('bmF0YWxpYWZpbGxpbmdoYW04QGdtYWlsLmNvbQ=='); } catch (e) { return ''; }
+    }
     var form = document.getElementById('contact-form');
     var status = document.getElementById('form-status');
     if (!form) return;
@@ -559,10 +562,10 @@
       var subject = encodeURIComponent('New enquiry from ' + name + ' — Filly Tech');
       var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
       try {
-        window.location.href = 'mailto:nataliafillingham8@gmail.com?subject=' + subject + '&body=' + body;
+        window.location.href = 'mailto:' + contactEmail() + '?subject=' + subject + '&body=' + body;
         status.textContent = 'Opening your email client…';
       } catch (err) {
-        status.textContent = 'Please email nataliafillingham8@gmail.com directly.';
+        status.textContent = 'Please email ' + contactEmail() + ' directly.';
       }
     });
   })();
